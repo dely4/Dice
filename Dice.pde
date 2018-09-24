@@ -1,24 +1,20 @@
-void setup()
-{
+void setup(){
 	noLoop();
 	size(1000,1000);
 }
 
-void draw()
-{
+void draw(){
 	//your code here
 	background(255,210,160);
 	for(int i = 0; i<11;i++){
 		for(int j = 0; j < 11; j++){
 		Die die = new Die(i*100+25,j*100+25);
-
 		die.show();
 		}
 	}
 }
 
-void mousePressed()
-{
+void mousePressed(){
 	redraw();
 }
 
@@ -32,6 +28,7 @@ class Die //models one single dice cube
 		this.x_position = x;
 		this.y_position = y;
 		this.dice_value = 0;
+		this.roll();
 	}
 	void roll() //creates random value for dice
 	{
@@ -44,11 +41,59 @@ class Die //models one single dice cube
 		this.draw_dots(dice_value);
 	}
 	void draw_dots(int value){ // draws the dots
-		for(int q = 1;  q < 4; q++){
-			for(int y = 1; y <4; y++){
-				fill(0);
-				Dot dot = new Dot((int)(x_position+12.5*q),(int)(y_position+12.5*y));
-			}
+		fill(0);
+		int dot_value = value;
+		switch (dot_value) {
+			case 1: Dot dotOne = new Dot((int)(x_position+25),(int)(y_position+25));
+					dotOne.show();
+					break;
+			case 2: Dot dotTwoRight = new Dot((int)(x_position+37.5),(int)(y_position+12.5));
+					dotTwoRight.show();
+					Dot dotTwoLeft = new Dot((int)(x_position+12.5),(int)(y_position+37.5));
+					dotTwoLeft.show();
+					break;
+			case 3: Dot dot3Right = new Dot((int)(x_position+37.5),(int)(y_position+12.5));
+					dot3Right.show();
+					Dot dot3Left = new Dot((int)(x_position+12.5),(int)(y_position+37.5));
+					dot3Left.show();
+					Dot dot3Mid = new Dot((int)(x_position+25),(int)(y_position+25));
+					dot3Mid.show();
+					break;
+			case 4: Dot dot4TRight = new Dot((int)(x_position+37.5),(int)(y_position+12.5));
+					dot4TRight.show();
+					Dot dot4BLeft = new Dot((int)(x_position+12.5),(int)(y_position+37.5));
+					dot4BLeft.show();
+					Dot dot4TLeft = new Dot((int)(x_position+12.5),(int)(y_position+12.5));
+					dot4TLeft.show();
+					Dot dot4BRight = new Dot((int)(x_position+37.5),(int)(y_position+37.5));
+					dot4BRight.show();
+					break;
+			case 5: Dot dot5TRight = new Dot((int)(x_position+37.5),(int)(y_position+12.5));
+					dot5TRight.show();
+					Dot dot5BLeft = new Dot((int)(x_position+12.5),(int)(y_position+37.5));
+					dot5BLeft.show();
+					Dot dot5TLeft = new Dot((int)(x_position+12.5),(int)(y_position+12.5));
+					dot5TLeft.show();
+					Dot dot5BRight = new Dot((int)(x_position+37.5),(int)(y_position+37.5));
+					dot5BRight.show();
+					Dot dot5Mid = new Dot((int)(x_position+25),(int)(y_position+25));
+					dot5Mid.show();
+					break;
+			case 6:	Dot dot6TRight = new Dot((int)(x_position+37.5),(int)(y_position+12.5));
+					dot6TRight.show();
+					Dot dot6BLeft = new Dot((int)(x_position+12.5),(int)(y_position+37.5));
+					dot6BLeft.show();
+					Dot dot6TLeft = new Dot((int)(x_position+12.5),(int)(y_position+12.5));
+					dot6TLeft.show();
+					Dot dot6BRight = new Dot((int)(x_position+37.5),(int)(y_position+37.5));
+					dot6BRight.show();
+					Dot dot6MLeft = new Dot((int)(x_position+12.5),(int)(y_position+25));
+					dot6MLeft.show();
+					Dot dot6MRight = new Dot((int)(x_position+37.5),(int)(y_position+25));
+					dot6MRight.show();
+					break;
+			default:System.out.println(dot_value);
+			break;
 		}
 	}
 }
