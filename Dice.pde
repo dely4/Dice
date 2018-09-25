@@ -1,17 +1,20 @@
 void setup(){
 	noLoop();
-	size(1000,1000);
+	size(600,500);
 }
 
 void draw(){
 	//your code here
 	background(255,210,160);
-	for(int i = 0; i<11;i++){
-		for(int j = 0; j < 11; j++){
+	int sum = 0;
+	for(int j = 0; j<5;j++){
+		for(int i = 0; i < 5; i++){
 		Die die = new Die(i*100+25,j*100+25);
 		die.show();
+		sum += die.dice_value;
 		}
 	}
+	text("Sum: " + sum,525,100);
 }
 
 void mousePressed(){
